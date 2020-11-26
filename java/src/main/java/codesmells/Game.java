@@ -5,12 +5,16 @@ public class Game {
     private Board _board = new Board();
 
     public void Play(char symbol, int x, int y) throws Exception {
-        //if first move
-        if (_lastSymbol == ' ') {
-            //if player is X
-            if (symbol == 'O') {
-                throw new Exception("Invalid first player");
-            }
+        ControlCorrectMove(symbol, x, y);
+
+        // update game state
+        _lastSymbol = symbol;
+        _board.AddTileAt(symbol, x, y);
+    }
+
+    private void ControlCorrectMove(char symbol, int x, int y) throws Exception {
+        if (_lastSymbol == ' ' && symbol == 'O') {
+            throw new Exception("Invalid first player");
         }
         //if not first move but player repeated
         else if (symbol == _lastSymbol) {
@@ -20,10 +24,6 @@ public class Game {
         else if (_board.TileAt(x, y).Symbol != ' ') {
             throw new Exception("Invalid position");
         }
-
-        // update game state
-        _lastSymbol = symbol;
-        _board.AddTileAt(symbol, x, y);
     }
 
     public char Winner() {
