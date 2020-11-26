@@ -2,13 +2,25 @@ package codesmells;
 
 public class Tile
 {
-    public int X;
-    public int Y;
-    public char Symbol;
+    private int X;
+    private int Y;
+    private char Symbol;
 
     public Tile(int x, int y, char symbol) {
-        this.X = x;
-        this.Y = y;
-        this.Symbol = symbol;
+        X = x;
+        Y = y;
+        Symbol = symbol;
+    }
+    public int getX() {
+        return X;
+    }
+    public int getY() {
+        return Y;
+    }
+    public char getSymbol() {
+        return Symbol;
+    }
+    public void setSymbol(char symbol) {
+        Symbol = symbol;
     }
 }

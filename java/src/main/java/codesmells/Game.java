@@ -21,36 +21,42 @@ public class Game {
             throw new Exception("Invalid next player");
         }
         //if not first move but play on an already played tile
-        else if (_board.GetSymbolTile(x,y) != ' ') {
+        else if (_board.GetSymbolTile(x, y) != ' ') {
             throw new Exception("Invalid position");
         }
     }
 
     public char Winner() {
         //if the positions in first row are taken
-        if (WinRow(0)) return _board.GetSymbolTile(0,0);
+        if (TileEmptyInARow(0) && ThreeSymbolInARow(0)) return _board.GetSymbolTile(0, 0);
 
         //if the positions in second row are taken
-        if (WinRow(1)) return _board.GetSymbolTile(1,0);
+        if (TileEmptyInARow(1) && ThreeSymbolInARow(1)) return _board.GetSymbolTile(1, 0);
 
         //if the positions in third row are taken
-        if (WinRow(2)) return _board.GetSymbolTile(2,0);
+        if (TileEmptyInARow(2) && ThreeSymbolInARow(2)) return _board.GetSymbolTile(2, 0);
 
         return ' ';
     }
 
-    private boolean WinRow(int i) {
-        if (_board.GetSymbolTile(i,0) != ' ' &&
-                _board.GetSymbolTile(i,1) != ' ' &&
-                _board.GetSymbolTile(i,2) != ' ') {
-            //if row is full with same symbol
-            if (_board.GetSymbolTile(i,0) ==
-                    _board.GetSymbolTile(i,1) &&
-                    _board.GetSymbolTile(i,2)== _board.GetSymbolTile(i,1)) {
-                return true;
+    private boolean TileEmptyInARow(int row) {
+        //if row is not empty
+        for (int col = 0; col < 3; col++) {
+            if (_board.GetSymbolTile(row, col) == ' ') {
+                return false;
             }
         }
-        return false;
+        return true;
+    }
+
+    private boolean ThreeSymbolInARow(int row) {
+        //Verify if a row is composed by same symbol
+        for (int col = 0; col < 2; col++) {
+            if (_board.GetSymbolTile(row, col) != _board.GetSymbolTile(row, col + 1)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
