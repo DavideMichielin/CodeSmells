@@ -6,7 +6,6 @@ public class Game {
 
     public void Play(char symbol, int x, int y) throws Exception {
         ControlCorrectMove(symbol, x, y);
-
         // update game state
         _lastSymbol = symbol;
         _board.AddTileAt(symbol, x, y);
