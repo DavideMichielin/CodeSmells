@@ -27,4 +27,8 @@ public class Board {
     public void AddTileAt(char symbol, int x, int y) {
         TileAt(x, y).Symbol = symbol;
     }
+
+    public char GetSymbolTile(int x,int y){
+        return TileAt(x,y).Symbol;
+    }
 }

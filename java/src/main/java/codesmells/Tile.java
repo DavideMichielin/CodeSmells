@@ -7,8 +7,8 @@ public class Tile
     public char Symbol;
 
     public Tile(int x, int y, char symbol) {
-        X = x;
-        Y = y;
-        Symbol = symbol;
+        this.X = x;
+        this.Y = y;
+        this.Symbol = symbol;
     }
 }
