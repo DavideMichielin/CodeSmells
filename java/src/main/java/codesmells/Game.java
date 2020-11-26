@@ -40,13 +40,13 @@ public class Game {
     }
 
     private boolean WinRow(int i) {
-        if (_board.TileAt(i, 0).Symbol != ' ' &&
-                _board.TileAt(i, 1).Symbol != ' ' &&
-                _board.TileAt(i, 2).Symbol != ' ') {
+        if (_board.GetSymbolTile(i,0) != ' ' &&
+                _board.GetSymbolTile(i,1) != ' ' &&
+                _board.GetSymbolTile(i,2) != ' ') {
             //if row is full with same symbol
-            if (_board.TileAt(i, 0).Symbol ==
-                    _board.TileAt(i, 1).Symbol &&
-                    _board.TileAt(i, 2).Symbol == _board.TileAt(i, 1).Symbol) {
+            if (_board.GetSymbolTile(i,0) ==
+                    _board.GetSymbolTile(i,1) &&
+                    _board.GetSymbolTile(i,2)== _board.GetSymbolTile(i,1)) {
                 return true;
             }
         }
