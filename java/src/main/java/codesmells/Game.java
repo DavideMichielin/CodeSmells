@@ -5,6 +5,7 @@ public class Game {
     private Board _board = new Board();
 
     public void Play(char symbol, int x, int y) throws Exception {
+        //control if the move is authorized or not
         ControlCorrectMove(symbol, x, y);
         // update game state
         _lastSymbolPlayed = symbol;
@@ -28,15 +29,19 @@ public class Game {
 
     public char Winner() {
         //if the positions in first row are taken
-        if (TileEmptyInARow(0) && ThreeSymbolInARow(0)) return _board.GetSymbolTile(0, 0);
+        if (isWinnerInARow(0)) return _board.GetSymbolTile(0, 0);
 
         //if the positions in second row are taken
-        if (TileEmptyInARow(1) && ThreeSymbolInARow(1)) return _board.GetSymbolTile(1, 0);
+        if (isWinnerInARow(1)) return _board.GetSymbolTile(1, 0);
 
         //if the positions in third row are taken
-        if (TileEmptyInARow(2) && ThreeSymbolInARow(2)) return _board.GetSymbolTile(2, 0);
+        if (isWinnerInARow(2)) return _board.GetSymbolTile(2, 0);
 
         return ' ';
+    }
+
+    private boolean isWinnerInARow(int i) {
+        return TileEmptyInARow(i) && ThreeSymbolInARow(i);
     }
 
     private boolean TileEmptyInARow(int row) {
