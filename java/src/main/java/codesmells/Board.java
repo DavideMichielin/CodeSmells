@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Board {
     private List<Tile> _plays = new ArrayList<>();
-
     public Board() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -17,7 +16,7 @@ public class Board {
 
     public Tile TileAt(int x, int y) {
         for (Tile t : _plays) {
-            if (t.getX() == x && t.getY() == y) {
+            if (t.getFirstCoordinate() == x && t.getSecondCoordinate() == y) {
                 return t;
             }
         }

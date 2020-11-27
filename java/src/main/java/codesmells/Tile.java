@@ -1,22 +1,22 @@
 package codesmells;
 
 public class Tile {
-    private int X;
-    private int Y;
+    Coordinate xy = new Coordinate();
     private char Symbol;
 
     public Tile(int x, int y, char symbol) {
-        X = x;
-        Y = y;
-        Symbol = symbol;
+        xy.setX(x);
+        ;
+        xy.setY(y);
+        this.Symbol = symbol;
     }
 
-    public int getX() {
-        return X;
+    public int getFirstCoordinate() {
+        return xy.getX();
     }
 
-    public int getY() {
-        return Y;
+    public int getSecondCoordinate(){
+        return xy.getY();
     }
 
     public char getSymbol() {
